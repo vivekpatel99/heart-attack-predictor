@@ -8,6 +8,7 @@ dependencies = [
     "dvc>=3.59.1",
     "pre-commit>=4.2.0",
     "pyrootutils>=1.0.4",
+    "xgboost>=3.0.0",
 ]
 
 [dependency-groups]

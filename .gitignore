@@ -174,3 +174,4 @@ cython_debug/
 .pypirc
 notebooks/heart_attack_prediction_dataset.csv
 data/heart_attack_prediction_dataset.csv
+*.pkl
