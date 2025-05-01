@@ -1,8 +1,9 @@
 import logging
 import sys
+from typing import Any
 
 
-def error_message_detail(error: Exception, error_details: sys) -> str:
+def error_message_detail(error: Exception, error_details: Any) -> str:
     """
     Extracts detailed error information including file name, line number, and the error message.
 
@@ -27,7 +28,7 @@ class MyException(Exception):
     Custom exception class for handling errors in the US visa application.
     """
 
-    def __init__(self, error_message: Exception, error_detail: sys):
+    def __init__(self, error_message: Exception, error_detail: Any):
         """
         Initializes the USvisaException with a detailed error message.
 

@@ -175,3 +175,4 @@ cython_debug/
 notebooks/heart_attack_prediction_dataset.csv
 data/heart_attack_prediction_dataset.csv
 *.pkl
+artifact/

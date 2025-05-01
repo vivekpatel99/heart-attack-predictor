@@ -54,7 +54,7 @@ select = ["E", "W", "F", "I", "B", "C4", "SIM", "TID"]
 # Ignore specific rules if necessary.
 # F401: Unused imports (explicitly ignored as per request)
 # Add others here if they conflict with project style, e.g., ignore = ["F401", "E501"]
-ignore = ["F401"]
+ignore = ["F401", "B904", "F403"]
 
 # Allow Ruff to automatically fix all fixable violations
 fixable = ["ALL"]

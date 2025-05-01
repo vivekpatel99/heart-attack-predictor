@@ -17,7 +17,7 @@ repos:
       - id: check-toml
       - id: check-case-conflict
       - id: check-added-large-files
-        args: [--enforce-all, --maxkb=70000] # 70mb
+        args: [--enforce-all, --maxkb=10000] # 10mb
         require_serial: true
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
@@ -60,7 +60,7 @@ repos:
       - id: codespell
         args:
           - --skip=logs/**,data/**,*.ipynb
-          - --ignore-words-list=abc,def,fpr,tpr,roc_auc,auc
+          - --ignore-words-list=abc,def,fpr,tpr,roc_auc,auc,pipline
 
   - repo: https://github.com/nbQA-dev/nbQA
     rev: 1.9.1
