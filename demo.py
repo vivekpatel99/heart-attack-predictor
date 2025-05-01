@@ -1,3 +1,4 @@
+# uv run --env-file .env demo.py
 from src.pipline.training_pipeline import TrainingPipeline
 
 if __name__ == "__main__":

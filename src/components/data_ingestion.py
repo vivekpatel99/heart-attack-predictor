@@ -1,4 +1,3 @@
-import logging
 import os
 import sys
 
@@ -9,6 +8,7 @@ from src.data_access.proj1_data import Proj1Data
 from src.entity.artifact_entity import DataIngestionArtifact
 from src.entity.config_entity import DataIngestionConfig
 from src.exception import MyException
+from src.logger import logging
 
 
 class DataIngestion:

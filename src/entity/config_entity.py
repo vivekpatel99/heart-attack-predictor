@@ -2,7 +2,7 @@ import os
 from dataclasses import dataclass
 from datetime import datetime
 
-import constants as CONST
+import src.constants as CONST
 
 TIMESTAMP: str = datetime.now().strftime("%m_%d_%Y_%H_%M_%S")
 

@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 
+import numpy as np
+
 
 @dataclass
 class DataIngestionArtifact:
@@ -23,9 +25,10 @@ class DataTransformationArtifact:
 
 @dataclass
 class ClassificationMetricArtifact:
-    f1_score: float
+    f1_score: float | np.ndarray
     precision_score: float
     recall_score: float
+    accuracy_score: float
 
 
 @dataclass

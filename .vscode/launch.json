@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Current File",
+            "name": "Python: Demo File",
             "type": "debugpy",
             "request": "launch",
             "program": "demo.py",
@@ -13,7 +13,7 @@
                 "PYTHON_ALIAS": "uv run python"
             },
             "justMyCode": true,
-            "preLaunchTask": "setPythonAlias" // Optional: See explanation below
+            "preLaunchTask": "setPythonAlias"
         }
     ]
 }
