@@ -49,6 +49,8 @@ drop_columns:
   - Income
   - Physical Activity Days Per Week
   - BMI
+  - Diet
+  - Medication Use
 
 # for data transformation
 num_features:

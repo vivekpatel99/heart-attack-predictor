@@ -59,6 +59,9 @@ class ModelTrainerConfig:
     _max_depth = CONST.MIN_SAMPLES_SPLIT_MAX_DEPTH
     _criterion = CONST.MIN_SAMPLES_SPLIT_CRITERION
     _random_state = CONST.MIN_SAMPLES_SPLIT_RANDOM_STATE
+    _class_weight = CONST.MODEL_TRAINER_CLASS_WEIGHT
+    _bootstrap = CONST.MODEL_TRAINER_BOOTSTRAP
+    _max_features = CONST.MODEL_TRAINER_MAX_FEATURES
 
 
 @dataclass

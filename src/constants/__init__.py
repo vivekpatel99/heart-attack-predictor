@@ -3,6 +3,8 @@
 import os
 from datetime import date
 
+from matplotlib.dates import MO
+
 # For MongoDB connection
 DATABASE_NAME = "DB_NAME"
 COLLECTION_NAME = "COLLECTION_NAME"
@@ -13,7 +15,7 @@ ARTIFACT_DIR: str = "artifact"
 
 MODEL_FILE_NAME = "model.pkl"
 
-TARGET_COLUMN = "Response"
+TARGET_COLUMN = "Heart Attack Risk"
 CURRENT_YEAR = date.today().year
 PREPROCSSING_OBJECT_FILE_NAME = "preprocessing.pkl"
 
@@ -52,11 +54,14 @@ MODEL_TRAINER_TRAINED_MODEL_NAME: str = "model.pkl"
 MODEL_TRAINER_EXPECTED_SCORE: float = 0.6
 MODEL_TRAINER_MODEL_CONFIG_FILE_PATH: str = os.path.join("config", "model.yaml")
 MODEL_TRAINER_N_ESTIMATORS = 200
-MODEL_TRAINER_MIN_SAMPLES_SPLIT: int = 7
-MODEL_TRAINER_MIN_SAMPLES_LEAF: int = 6
+MODEL_TRAINER_MIN_SAMPLES_SPLIT: int = 15
+MODEL_TRAINER_MIN_SAMPLES_LEAF: int = 4
 MIN_SAMPLES_SPLIT_MAX_DEPTH: int = 10
-MIN_SAMPLES_SPLIT_CRITERION: str = "entropy"
+MIN_SAMPLES_SPLIT_CRITERION: str = "log_loss"
 MIN_SAMPLES_SPLIT_RANDOM_STATE: int = 101
+MODEL_TRAINER_CLASS_WEIGHT = "balanced_subsample"
+MODEL_TRAINER_BOOTSTRAP = True
+MODEL_TRAINER_MAX_FEATURES = "sqrt"
 
 # --- MODEL Evaluation related constants
 MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE: float = 0.02

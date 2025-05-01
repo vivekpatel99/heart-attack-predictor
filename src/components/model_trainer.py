@@ -42,6 +42,9 @@ class ModelTrainer:
                 min_samples_leaf=self.model_trainer_config._min_samples_leaf,
                 max_depth=self.model_trainer_config._max_depth,
                 criterion=self.model_trainer_config._criterion,
+                class_weight=self.model_trainer_config._class_weight,
+                bootstrap=self.model_trainer_config._bootstrap,
+                max_features=self.model_trainer_config._max_features,
                 random_state=self.model_trainer_config._random_state,
             )
 
@@ -83,7 +86,7 @@ class ModelTrainer:
             logging.info("train-test data loaded")
 
             # Train model and get metrics
-            trained_model, metric_artifact = self.get_model_object_and_report(train=train_arr, test=test_arr)
+            trained_model, metric_artifact = self.get_model_object_and_report(train_array=train_arr, test_array=test_arr)
             logging.info("Model object and artifact loaded.")
 
             # Load preprocessing object
