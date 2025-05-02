@@ -79,8 +79,8 @@ def save_object(file_path: str, obj: object) -> None:
 
     try:
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
-        with open(file_path, "wb") as file_obj:
-            joblib.dump(obj, file_obj)
+        # with open(file_path, "wb") as file_obj:
+        joblib.dump(obj, file_path)
 
         logging.info("Exited the save_object method of utils")
 

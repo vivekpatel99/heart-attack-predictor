@@ -1,8 +1,7 @@
 import os
 import sys
-from io import StringIO
+from io import BytesIO
 
-import boto3
 import joblib
 from botocore.exceptions import ClientError
 from mypy_boto3_s3.service_resource import Bucket
@@ -19,7 +18,7 @@ class SimpleStorageService:
     data uploads, and data retrieval in S3 buckets.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Initializes the SimpleStorageService instance with S3 resource and client
         from the S3Client class.
@@ -46,8 +45,7 @@ class SimpleStorageService:
         except Exception as e:
             raise MyException(e, sys) from e
 
-    @staticmethod
-    def read_object(object_name: str, decode: bool = True, make_readable: bool = False) -> str | StringIO:
+    def read_object(self, bucket_name: str, model_file: str) -> str | BytesIO:
         """
         Reads the specified S3 object with optional decoding and formatting.
 
@@ -61,13 +59,17 @@ class SimpleStorageService:
         """
         try:
             # read and decode the object content if decode=True
-            func = (lambda: object_name.get()["Body"].read().decode("utf-8")) if decode else (lambda: object_name.get()["Body"].read())
+            # func = (lambda: object_name.get()["Body"].read().decode("utf-8")) if decode else (lambda: object_name.get()["Body"].read())
 
-            # Convert to StringIO if make_readable=True
-            def conv_func():
-                return StringIO(func()) if make_readable else func()
+            # # Convert to StringIO if make_readable=True
+            # def conv_func():
+            #     return StringIO(func()) if make_readable else func()
 
-            return conv_func()
+            # return conv_func()
+            s3_object = self.s3_client.get_object(Bucket=bucket_name, Key=model_file)
+            model_stream = s3_object["Body"]
+            model_buffer = BytesIO(model_stream.read())
+            return model_buffer
         except Exception as e:
             raise MyException(e, sys) from e
 
@@ -129,9 +131,10 @@ class SimpleStorageService:
         """
         try:
             model_file = model_dir + "/" + model_name if model_dir else model_name
-            file_object = self.get_file_object(model_file, bucket_name)
-            model_obj = self.read_object(file_object, decode=False)
-            model = joblib.loads(model_obj)
+            model_buffer = self.read_object(bucket_name=bucket_name, model_file=model_file)
+
+            # Load the model directly from the stream
+            model = joblib.load(model_buffer)
             logging.info("Production model loaded from S3 bucket.")
             return model
         except Exception as e:
