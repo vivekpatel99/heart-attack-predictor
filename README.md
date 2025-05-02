@@ -48,7 +48,9 @@ This synthetic dataset provides a comprehensive array of features relevant to he
 
 - **Python:** Core programming language.
 - **Jupyter Notebook:** For exploratory data analysis (EDA), model development, and training.
-- **AWS:** `IAM` and `S3 Bucket` for storing model artifacts.
+- **AWS:** `IAM` and `S3 Bucket` for storing and loading model artifacts.
+- **DVC:** for Data Versioning
+- **FastAPI:** for interacting with the model
 - **Docker:** Containerization for consistent environment.
 - **VS Code Dev Containers:** Development environment setup.
 
