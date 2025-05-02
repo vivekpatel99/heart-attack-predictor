@@ -1,4 +1,4 @@
-# heart-attack-predictor
+# heart-attack-predictor-end-to-end-ml-project
 
 ## About Dataset
 
@@ -48,7 +48,7 @@ This synthetic dataset provides a comprehensive array of features relevant to he
 
 - **Python:** Core programming language.
 - **Jupyter Notebook:** For exploratory data analysis (EDA), model development, and training.
-- **Hydra:** Configuration management.
+- **AWS:** `IAM` and `S3 Bucket` for storing model artifacts.
 - **Docker:** Containerization for consistent environment.
 - **VS Code Dev Containers:** Development environment setup.
 
@@ -59,8 +59,8 @@ This synthetic dataset provides a comprehensive array of features relevant to he
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/vivekpatel99/football-players-tracking-yolo.git
-   cd football-players-tracking-yolo
+   git clone https://github.com/vivekpatel99/heart-attack-predictor-end-to-end-ml-project.git
+   cd heart-attack-predictor-end-to-end-ml-project
    ```
 
 2. **Install VS Code Extensions:**
@@ -75,9 +75,14 @@ This synthetic dataset provides a comprehensive array of features relevant to he
 
    ```dotenv
    # .env
-   ROBOFLOW_API_KEY=YOUR_ROBOFLOW_API_KEY
-   # Optional: Define dataset path if not using default
-   # DATA_ROOT=/path/to/your/dataset
+   DB_NAME = ""
+   COLLECTION_NAME = ""
+   DB_CONNECTION_URL = ""
+   AWS_ACCESS_KEY_ID = ""
+   AWS_SECRET_ACCESS_KEY = ""
+   REGION_NAME = ""
+   APP_HOST = ""
+   APP_PORT = ""
    ```
 
    - *Note: The `.env` file is gitignored for security.*
@@ -95,7 +100,7 @@ This synthetic dataset provides a comprehensive array of features relevant to he
    - Install the required Python packages:
 
    ```bash
-   uv pip install -r requirements.txt
+   uv add -r requirements.txt
    ```
 
 ## Data Preparation
@@ -120,3 +125,5 @@ it was developed and tested on the following hardware:
 While these specifications are recommended for optimal performance, the project can be adapted to run on systems with less powerful hardware.
 
 ## 📚 Reference
+
+1. [Vehicle Insurance Data Pipeline](https://github.com/vikashishere/YT-MLops-Proj1/tree/main)

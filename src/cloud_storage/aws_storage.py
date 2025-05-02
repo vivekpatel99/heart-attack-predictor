@@ -51,21 +51,13 @@ class SimpleStorageService:
 
         Args:
             object_name (str): The S3 object name.
-            decode (bool): Whether to decode the object content as a string.
+            decode (bool): Whether to decode the object content as a string
             make_readable (bool): Whether to convert content to StringIO for DataFrame usage.
 
         Returns:
             Union[StringIO, str]: The content of the object, as a StringIO or decoded string.
         """
         try:
-            # read and decode the object content if decode=True
-            # func = (lambda: object_name.get()["Body"].read().decode("utf-8")) if decode else (lambda: object_name.get()["Body"].read())
-
-            # # Convert to StringIO if make_readable=True
-            # def conv_func():
-            #     return StringIO(func()) if make_readable else func()
-
-            # return conv_func()
             s3_object = self.s3_client.get_object(Bucket=bucket_name, Key=model_file)
             model_stream = s3_object["Body"]
             model_buffer = BytesIO(model_stream.read())
