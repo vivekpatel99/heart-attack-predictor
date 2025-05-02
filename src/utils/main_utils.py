@@ -3,6 +3,7 @@ import os
 import sys
 
 import dill  # nosec B403
+import joblib
 import numpy as np
 import yaml
 
@@ -38,8 +39,8 @@ def load_object(file_path: str) -> object:
     """
     try:
         with open(file_path, "rb") as file_obj:
-            # obj = dill.load(file_obj)
-            obj = json.load(file_obj)  # Use json.load instead
+            obj = joblib.load(file_obj)
+            # obj = json.load(file_obj)  # Use json.load instead
         return obj
     except Exception as e:
         raise MyException(e, sys) from e
@@ -79,7 +80,7 @@ def save_object(file_path: str, obj: object) -> None:
     try:
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
         with open(file_path, "wb") as file_obj:
-            dill.dump(obj, file_obj)
+            joblib.dump(obj, file_obj)
 
         logging.info("Exited the save_object method of utils")
 

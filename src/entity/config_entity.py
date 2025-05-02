@@ -78,6 +78,6 @@ class ModelPusherConfig:
 
 
 @dataclass
-class VehiclePredictorConfig:
+class HeartAttackPredictorConfig:
     model_file_path: str = CONST.MODEL_FILE_NAME
     model_bucket_name: str = CONST.MODEL_BUCKET_NAME

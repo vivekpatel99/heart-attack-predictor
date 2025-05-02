@@ -22,10 +22,10 @@ class DataTransformation:
         data_transformation_config: DataTransformationConfig,
         data_validation_artifact: DataValidationArtifact,
     ):
+        self.data_ingestion_artifact = data_ingestion_artifact
+        self.data_transformation_config = data_transformation_config
+        self.data_validation_artifact = data_validation_artifact
         try:
-            self.data_ingestion_artifact = data_ingestion_artifact
-            self.data_transformation_config = data_transformation_config
-            self.data_validation_artifact = data_validation_artifact
             self._schema_config = read_yaml_file(file_path=SCHEMA_FILE_PATH)
         except Exception as e:
             raise MyException(e, sys)
@@ -37,14 +37,13 @@ class DataTransformation:
         except Exception as e:
             raise MyException(e, sys)
 
-    @staticmethod
-    def cols_preprocessor(source_df: pd.DataFrame, drop_cols: list):
-        bp_split = source_df["Blood Pressure"].str.split("/", expand=True).astype(int)
-        bp_split.columns = ["Systolic", "Diastolic"]
-        source_df.drop(drop_cols, axis=1, inplace=True)
-        source_df = pd.concat([source_df, bp_split], axis=1)
-        source_df.Sex = source_df.Sex.map({"Male": 1, "Female": 0})
-        return source_df
+    # @staticmethod
+    # def cols_preprocessor(source_df: pd.DataFrame, drop_cols: list):
+    #     bp_split = source_df["Blood Pressure"].str.split("/", expand=True).astype(int)
+    #     bp_split.columns = ["Systolic", "Diastolic"]
+    #     source_df.drop(drop_cols, axis=1, inplace=True)
+    #     source_df = pd.concat([source_df, bp_split], axis=1)
+    #     return source_df
 
     def get_data_transformer_object(self) -> Pipeline:
         """
