@@ -172,7 +172,9 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
-notebooks/heart_attack_prediction_dataset.csv
-data/heart_attack_prediction_dataset.csv
+notebooks/*.csv
+data/*.csv
 *.pkl
 artifact/
+node_modules
+mlruns
