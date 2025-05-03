@@ -15,7 +15,7 @@ ARTIFACT_DIR: str = "artifact"
 
 MODEL_FILE_NAME = "model.joblib"
 
-TARGET_COLUMN = "Heart Attack Risk"
+TARGET_COLUMN = "Result"
 CURRENT_YEAR = date.today().year
 PREPROCSSING_OBJECT_FILE_NAME = "preprocessing.joblib"
 
@@ -53,15 +53,12 @@ MODEL_TRAINER_TRAINED_MODEL_DIR: str = "trained_model"
 MODEL_TRAINER_TRAINED_MODEL_NAME: str = "model.joblib"
 MODEL_TRAINER_EXPECTED_SCORE: float = 0.6
 MODEL_TRAINER_MODEL_CONFIG_FILE_PATH: str = os.path.join("config", "model.yaml")
-MODEL_TRAINER_N_ESTIMATORS = 200
-MODEL_TRAINER_MIN_SAMPLES_SPLIT: int = 15
-MODEL_TRAINER_MIN_SAMPLES_LEAF: int = 4
-MIN_SAMPLES_SPLIT_MAX_DEPTH: int = 10
-MIN_SAMPLES_SPLIT_CRITERION: str = "log_loss"
+MODEL_TRAINER_N_ESTIMATORS = 750
+MODEL_TRAINER_LEARNING_RATE = 0.007659266705050152
 MIN_SAMPLES_SPLIT_RANDOM_STATE: int = 101
-MODEL_TRAINER_CLASS_WEIGHT = "balanced_subsample"
-MODEL_TRAINER_BOOTSTRAP = True
-MODEL_TRAINER_MAX_FEATURES = "sqrt"
+MODEL_TRAINER_SUBSAMPLE = 0.8638068341586023
+MODEL_TRAINER_SCALE_POS_WEIGHT = 3.0839016606865917
+
 
 # --- MODEL Evaluation related constants
 MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE: float = 0.02
@@ -71,3 +68,13 @@ MODEL_PUSHER_S3_KEY = "model-registry"
 
 APP_HOST = os.environ.get("APP_HOST")
 APP_PORT = os.environ.get("APP_PORT")
+
+
+# {
+#     "classifier": "XGBoost",
+#     "n_estimators": 750,
+#     "max_depth": 24,
+#     "learning_rate": 0.007659266705050152,
+#     "subsample": ,
+#     "scale_pos_weight": 3.0839016606865917,
+# }

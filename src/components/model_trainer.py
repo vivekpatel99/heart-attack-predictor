@@ -1,6 +1,7 @@
 import sys
 
 import numpy as np
+import xgboost as xgb
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 
@@ -36,17 +37,24 @@ class ModelTrainer:
             logging.info("train-test split done.")
 
             # Initialize RandomForestClassifier with specified parameters
-            model = RandomForestClassifier(
+            model = xgb.XGBClassifier(
                 n_estimators=self.model_trainer_config._n_estimators,
-                min_samples_split=self.model_trainer_config._min_samples_split,
-                min_samples_leaf=self.model_trainer_config._min_samples_leaf,
-                max_depth=self.model_trainer_config._max_depth,
-                criterion=self.model_trainer_config._criterion,
-                class_weight=self.model_trainer_config._class_weight,
-                bootstrap=self.model_trainer_config._bootstrap,
-                max_features=self.model_trainer_config._max_features,
+                learning_rate=self.model_trainer_config._learning_rate,
+                subsample=self.model_trainer_config._subsample,
+                scale_pos_weight=self.model_trainer_config._scale_pos_weight,
                 random_state=self.model_trainer_config._random_state,
             )
+            # model = RandomForestClassifier(
+            #     n_estimators=self.model_trainer_config._n_estimators,
+            #     min_samples_split=self.model_trainer_config._min_samples_split,
+            #     min_samples_leaf=self.model_trainer_config._min_samples_leaf,
+            #     max_depth=self.model_trainer_config._max_depth,
+            #     criterion=self.model_trainer_config._criterion,
+            #     class_weight=self.model_trainer_config._class_weight,
+            #     bootstrap=self.model_trainer_config._bootstrap,
+            #     max_features=self.model_trainer_config._max_features,
+            #     random_state=self.model_trainer_config._random_state,
+            # )
 
             # Fit the model
             logging.info("Model training going on...")
