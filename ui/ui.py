@@ -48,7 +48,7 @@ def ui() -> None:
             data = HeartAttackData(**input_data)
             df = data.to_dataframe()
             classifier = HeartAttackClaassifier(prediction_pipeline_config=HeartAttackPredictorConfig())
-            prediction = classifier.predict(df)[0]
+            prediction = classifier.predict(df)
             st.success(f"Predicted: {'Heart Attack' if prediction == 1 else 'No Heart Attack'}")
     with st.sidebar:
         st.header("Admin Tools")

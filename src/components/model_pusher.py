@@ -3,7 +3,7 @@ import sys
 from src.cloud_storage.aws_storage import SimpleStorageService
 from src.entity.artifact_entity import ModelEvaluationArtifact, ModelPusherArtifact
 from src.entity.config_entity import ModelPusherConfig
-from src.entity.s3_estimator import Proj1Estimator
+from src.entity.s3_estimator import S3Estimator
 from src.exception import MyException
 from src.logger import logging
 
@@ -17,7 +17,7 @@ class ModelPusher:
         self.s3 = SimpleStorageService()
         self.model_evaluation_artifact = model_evaluation_artifact
         self.model_pusher_config = model_pusher_config
-        self.proj1_estimator = Proj1Estimator(bucket_name=model_pusher_config.bucket_name, model_path=model_pusher_config.s3_model_key_path)
+        self.proj1_estimator = S3Estimator(bucket_name=model_pusher_config.bucket_name, model_path=model_pusher_config.s3_model_key_path)
 
     def initiate_model_pusher(self) -> ModelPusherArtifact:
         """

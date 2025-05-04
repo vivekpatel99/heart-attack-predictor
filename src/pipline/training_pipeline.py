@@ -142,8 +142,7 @@ class TrainingPipeline:
             if not model_evaluation_artifact.is_model_accepted:
                 logging.info("Model not accepted.")
                 return None
-            model_pusher_artifact = self.start_model_pusher(model_evaluation_artifact=model_evaluation_artifact)
+            self.start_model_pusher(model_evaluation_artifact=model_evaluation_artifact)
 
-            print(model_pusher_artifact)
         except Exception as e:
             raise MyException(e, sys) from e

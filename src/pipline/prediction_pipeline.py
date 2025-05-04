@@ -4,7 +4,7 @@ import pandas as pd
 from pydantic import BaseModel
 
 from src.entity.config_entity import HeartAttackPredictorConfig
-from src.entity.s3_estimator import Proj1Estimator
+from src.entity.s3_estimator import S3Estimator
 from src.exception import MyException
 from src.logger import logging
 
@@ -19,13 +19,13 @@ class HeartAttackClaassifier(BaseModel):
         """
         try:
             logging.info("Entered predict method of VehicleDataClassifier class")
-            model = Proj1Estimator(
+            model = S3Estimator(
                 bucket_name=self.prediction_pipeline_config.model_bucket_name,
                 model_path=self.prediction_pipeline_config.model_file_path,
             )
             result = model.predict(dataframe)
 
-            return result
+            return result[0]
 
         except Exception as e:
             raise MyException(e, sys)

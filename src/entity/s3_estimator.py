@@ -7,7 +7,7 @@ from src.entity.estimator import MyModel
 from src.exception import MyException
 
 
-class Proj1Estimator:
+class S3Estimator:
     """
     This class is used to save and retrieve our model from s3 bucket and to do prediction
     """

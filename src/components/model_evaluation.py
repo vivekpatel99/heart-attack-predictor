@@ -1,6 +1,5 @@
 import sys
 from dataclasses import dataclass
-from math import log
 from typing import Optional
 
 import pandas as pd
@@ -10,10 +9,11 @@ from src.components.data_transformation import DataTransformation
 from src.constants import SCHEMA_FILE_PATH, TARGET_COLUMN
 from src.entity.artifact_entity import DataIngestionArtifact, ModelEvaluationArtifact, ModelTrainerArtifact
 from src.entity.config_entity import ModelEvaluationConfig
-from src.entity.s3_estimator import Proj1Estimator
+from src.entity.s3_estimator import S3Estimator
 from src.exception import MyException
 from src.logger import logging
 from src.utils.main_utils import load_object, read_yaml_file
+from src.utils.visualization import plot_confusion_matrix, plot_roc_curve
 
 
 @dataclass
@@ -39,7 +39,7 @@ class ModelEvaluation(DataTransformation):
         self.data_ingestion_artifact = data_ingestion_artifact
         self.model_trainer_artifact = model_trainer_artifact
 
-    def get_best_model(self) -> Optional[Proj1Estimator]:
+    def get_best_model(self) -> Optional[S3Estimator]:
         """
         Method Name :   get_best_model
         Description :   This function is used to get model from production stage.
@@ -50,7 +50,7 @@ class ModelEvaluation(DataTransformation):
         try:
             bucket_name = self.model_eval_config.bucket_name
             model_path = self.model_eval_config.s3_model_key_path
-            proj1_estimator = Proj1Estimator(bucket_name=bucket_name, model_path=model_path)
+            proj1_estimator = S3Estimator(bucket_name=bucket_name, model_path=model_path)
 
             if proj1_estimator.is_model_present(model_path=model_path):
                 return proj1_estimator
@@ -84,6 +84,12 @@ class ModelEvaluation(DataTransformation):
                 logging.info("Computing F1_Score for production model..")
                 y_hat_best_model = best_model.predict(x)
                 best_model_f1_score = f1_score(y, y_hat_best_model)
+
+                # --- Plots
+                # confusion matrix
+                plot_confusion_matrix(y, y_hat_best_model)  # Close the figure to free memory
+                plot_roc_curve(y=y.to_numpy(), y_hat=y_hat_best_model)
+
                 logging.info(f"F1_Score-Production Model: {best_model_f1_score}, F1_Score-New Trained Model: {trained_model_f1_score}")
 
             tmp_best_model_score = 0 if best_model_f1_score is None else best_model_f1_score

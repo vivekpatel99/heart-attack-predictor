@@ -13,6 +13,10 @@ MONGODB_URL_KEY = "DB_CONNECTION_URL"
 PIPELINE_NAME: str = ""
 ARTIFACT_DIR: str = "artifact"
 
+README_ASSETS = "readme_assets"
+
+TIMESTAMP: str = f"timestamp-{date.today()}"
+
 MODEL_FILE_NAME = "model.joblib"
 
 TARGET_COLUMN = "result"
@@ -68,13 +72,3 @@ MODEL_PUSHER_S3_KEY = "model-registry"
 
 APP_HOST = os.environ.get("APP_HOST")
 APP_PORT = os.environ.get("APP_PORT")
-
-
-# {
-#     "classifier": "XGBoost",
-#     "n_estimators": 750,
-#     "max_depth": 24,
-#     "learning_rate": 0.007659266705050152,
-#     "subsample": ,
-#     "scale_pos_weight": 3.0839016606865917,
-# }
