@@ -27,7 +27,6 @@ The [heart attack datasets](https://www.kaggle.com/datasets/sukhmandeepsinghbrar
 - **Python:** Core programming language.
 - **Jupyter Notebook:** For exploratory data analysis (EDA), model development, and training.
 - **AWS:** `IAM`, `S3 Bucket`, `ECR (Amazon Elastic Container Registry)` for storing and loading model artifacts.
-- **FastAPI:** for interacting with the model
 - **Streamlit:** for UI design and deployment.
 - **Docker:** Containerization for consistent environment.
 - **VS Code Dev Containers:** Development environment setup.
@@ -91,7 +90,9 @@ The [heart attack datasets](https://www.kaggle.com/datasets/sukhmandeepsinghbrar
 
 ## 📈 Results & Visualizations
 
-**Validation Metrics:**
+![Confusion Matrix](readme_assets/confusion_matrix.png)
+
+![ROC Curve](readme_assets/roc_curve.png)
 
 ## 🖥️ Hardware Specifications
 

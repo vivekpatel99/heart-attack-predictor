@@ -178,3 +178,4 @@ data/*.csv
 artifact/
 node_modules
 mlruns
+heart-attack-pred-key.pem
