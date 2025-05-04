@@ -11,8 +11,7 @@ COPY . /app
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 RUN uv sync --no-dev
 
-# Expose the port FastAPI will run on
 EXPOSE 5000
 
 # Command to run the FastAPI app
-CMD ["uv", "run", "streamlit", "run", "ui/ui.py"]
+CMD ["uv", "run", "streamlit", "run", "ui/ui.py", "--server.port=5000", "--server.address=0.0.0.0"]
