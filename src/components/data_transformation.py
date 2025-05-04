@@ -37,6 +37,10 @@ class DataTransformation:
         except Exception as e:
             raise MyException(e, sys)
 
+    def rename_columns(self, df: pd.DataFrame) -> pd.DataFrame:
+        df.columns = df.columns.str.lower().str.replace(" ", "_", regex=False).str.replace("-", "_", regex=False)
+        return df
+
     def get_data_transformer_object(self) -> Pipeline:
         """
         Creates and returns a data transformer object for the data,
@@ -85,7 +89,8 @@ class DataTransformation:
             train_df = self.read_data(file_path=self.data_ingestion_artifact.trained_file_path)
             test_df = self.read_data(file_path=self.data_ingestion_artifact.test_file_path)
             logging.info("Train-Test data loaded")
-
+            train_df = self.rename_columns(df=train_df)
+            test_df = self.rename_columns(df=test_df)
             input_feature_train_df = train_df.drop(columns=[TARGET_COLUMN], axis=1)
             target_feature_train_df = train_df[TARGET_COLUMN]
 

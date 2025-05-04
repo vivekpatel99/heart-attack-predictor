@@ -19,7 +19,7 @@ numerical_columns:
   - Troponin
 
 categorical_columns:
-  - Result
+  - result
 
 # for data transformation
 num_features:
@@ -32,10 +32,10 @@ num_features:
   - Troponin
 
 mm_columns:
-  - Age
-  - Heart rate
-  - Systolic blood pressure
-  - Diastolic blood pressure
-  - Blood sugar
-  - CK-MB
-  - Troponin
+  - age
+  - heart_rate
+  - systolic_blood_pressure
+  - diastolic_blood_pressure
+  - blood_sugar
+  - ck_mb
+  - troponin

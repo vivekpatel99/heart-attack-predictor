@@ -15,7 +15,7 @@ ARTIFACT_DIR: str = "artifact"
 
 MODEL_FILE_NAME = "model.joblib"
 
-TARGET_COLUMN = "Result"
+TARGET_COLUMN = "result"
 CURRENT_YEAR = date.today().year
 PREPROCSSING_OBJECT_FILE_NAME = "preprocessing.joblib"
 

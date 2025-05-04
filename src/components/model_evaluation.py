@@ -69,6 +69,7 @@ class ModelEvaluation(DataTransformation):
         """
         try:
             test_df = pd.read_csv(self.data_ingestion_artifact.test_file_path)
+            test_df = self.rename_columns(df=test_df)
             x, y = test_df.drop(TARGET_COLUMN, axis=1), test_df[TARGET_COLUMN]
             logging.info("Splitting data into train and test set")
             y = self._map_result_column(col=y)

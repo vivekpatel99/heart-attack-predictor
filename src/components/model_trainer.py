@@ -44,17 +44,6 @@ class ModelTrainer:
                 scale_pos_weight=self.model_trainer_config._scale_pos_weight,
                 random_state=self.model_trainer_config._random_state,
             )
-            # model = RandomForestClassifier(
-            #     n_estimators=self.model_trainer_config._n_estimators,
-            #     min_samples_split=self.model_trainer_config._min_samples_split,
-            #     min_samples_leaf=self.model_trainer_config._min_samples_leaf,
-            #     max_depth=self.model_trainer_config._max_depth,
-            #     criterion=self.model_trainer_config._criterion,
-            #     class_weight=self.model_trainer_config._class_weight,
-            #     bootstrap=self.model_trainer_config._bootstrap,
-            #     max_features=self.model_trainer_config._max_features,
-            #     random_state=self.model_trainer_config._random_state,
-            # )
 
             # Fit the model
             logging.info("Model training going on...")
