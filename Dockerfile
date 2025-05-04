@@ -4,6 +4,7 @@ FROM python:3.10-slim-buster
 # Set the working directory
 WORKDIR /app
 
+ARG CACHEBUST=1
 # Copy your application code
 COPY . /app
 
