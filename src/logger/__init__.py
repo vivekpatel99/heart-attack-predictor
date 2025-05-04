@@ -3,7 +3,15 @@ import os
 from datetime import datetime
 from logging.handlers import RotatingFileHandler
 
-from from_root import from_root
+import pyrootutils
+
+root = pyrootutils.setup_root(
+    search_from=__file__,
+    indicator=[".git", "pyproject.toml"],
+    pythonpath=True,
+    dotenv=True,
+)
+
 
 # Constants for log configuration
 LOG_DIR = "logs"
@@ -11,8 +19,8 @@ LOG_FILE = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log"
 MAX_LOG_SIZE = 5 * 1024 * 1024  # 5 MB
 BACKUP_COUNT = 3  # Number of backup log files to keep
 
-# Construct log file path
-log_dir_path = os.path.join(from_root(), LOG_DIR)
+# Define the log file path relative to the project root
+log_dir_path = os.path.join(root, LOG_DIR)
 os.makedirs(log_dir_path, exist_ok=True)
 log_file_path = os.path.join(log_dir_path, LOG_FILE)
 

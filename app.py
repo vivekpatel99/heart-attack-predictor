@@ -1,21 +1,14 @@
-import pyrootutils
 import streamlit as st
 
-pyrootutils.setup_root(
-    search_from=__file__,
-    indicator=[".git", "pyproject.toml"],
-    pythonpath=True,
-    dotenv=True,
-)
-
-from api_model import HeartAttackData  # noqa: E402
-
+from src.entity.api_model import HeartAttackData  # noqa: E402
 from src.entity.config_entity import HeartAttackPredictorConfig  # noqa: E402
+from src.logger import logging  # noqa: E402
 from src.pipline.prediction_pipeline import HeartAttackClaassifier  # noqa: E402
 from src.pipline.training_pipeline import TrainingPipeline  # noqa: E402
 
 
 def ui() -> None:
+    logging.info("Starting UI")
     st.set_page_config(page_title="Heart Attack Predictor", page_icon="❤️", layout="centered")
 
     # st.image("your_logo.png", width=80)
@@ -35,6 +28,7 @@ def ui() -> None:
             troponin = st.number_input("Troponin", min_value=0, max_value=15)
 
         if st.form_submit_button("Predict Risk"):
+            logging.info("Form submitted")
             input_data = {
                 "gender": 0 if gender == "Female" else 1,
                 "age": age,
@@ -53,6 +47,7 @@ def ui() -> None:
     with st.sidebar:
         st.header("Admin Tools")
         if st.button("Retrain Model"):
+            logging.info("Retraining model")
             training_pipeline = TrainingPipeline()
             training_pipeline.run_pipeline()
             st.success("Model retrained successfully!")
