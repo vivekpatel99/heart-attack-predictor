@@ -60,24 +60,3 @@ def ui() -> None:
 
 if __name__ == "__main__":
     ui()
-# import streamlit as st
-
-# st.set_page_config(page_title="Heart Attack Predictor", page_icon="❤️", layout="centered")
-
-# st.image("your_logo.png", width=80)
-# st.title("Heart Attack Predictor")
-# st.markdown("Enter your details below to assess your risk.")
-
-# with st.form(key="risk_form"):
-#     col1, col2 = st.columns(2)
-#     with col1:
-#         age = st.number_input("Age", min_value=14, max_value=130, help="Your age in years")
-#         gender = st.selectbox("Gender", ["Male", "Female"])
-#         heart_rate = st.number_input("Heart Rate", min_value=20, max_value=200)
-#     with col2:
-#         systolic_bp = st.number_input("Systolic BP", min_value=30, max_value=250)
-#         diastolic_bp = st.number_input("Diastolic BP", min_value=30, max_value=250)
-#         blood_sugar = st.number_input("Blood Sugar", min_value=30, max_value=550)
-#         ck_mb = st.number_input("CK-MB", min_value=0, max_value=300)
-#         troponin = st.number_input("Troponin", min_value=0, max_value=15)
-#     submitted = st.form_submit_button("Predict Risk")
