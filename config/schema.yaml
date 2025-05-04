@@ -1,75 +1,41 @@
 columns:
-  - Patient ID: object # Assuming it might contain non-numeric chars, change to int if purely numeric
-  - Age: int
-  - Sex: category
-  - Cholesterol: int
-  - Blood Pressure: object # Stored as string like 'systolic/diastolic'
-  - Heart Rate: int
-  - Diabetes: category # Yes/No, could also be int (1/0)
-  - Family History: int # 1/0
-  - Smoking: int # 1/0
-  - Obesity: int # 1/0
-  - Alcohol Consumption: category # None/Light/Moderate/Heavy
-  - Exercise Hours Per Week: float
-  - Diet: category # Healthy/Average/Unhealthy
-  - Previous Heart Problems: int # 1/0
-  - Medication Use: int # 1/0
-  - Stress Level: int # 1-10
-  - Sedentary Hours Per Day: float
-  - Income: int # Assuming integer income levels
-  - BMI: float
-  - Triglycerides: int
-  - Physical Activity Days Per Week: int
-  - Sleep Hours Per Day: float
-  - Country: category
-  - Continent: category
-  - Hemisphere: category
-  - Heart Attack Risk: int # Target variable: 1/0
+  - Gender: int64
+  - Age: int64
+  - Heart rate: int64
+  - Systolic blood pressure: int64
+  - Diastolic blood pressure: int64
+  - Blood sugar: float64
+  - CK-MB: float64
+  - Troponin: float64
+  - Result: object
 
 numerical_columns:
   - Age
-  - Cholesterol
-  - Heart Rate
-  - Exercise Hours Per Week
-  - Triglycerides
-  - Sedentary Hours Per Day
-  - Systolic
-  - Diastolic
+  - Heart rate
+  - Systolic blood pressure
+  - Diastolic blood pressure
+  - Blood sugar
+  - CK-MB
+  - Troponin
 
 categorical_columns:
-  - Sex
-  - Stress Level
-
-drop_columns:
-  - Patient ID
-  - Blood Pressure
-  - Country
-  - Continent
-  - Hemisphere
-  - Income
-  - Physical Activity Days Per Week
-  - BMI
-  - Diet
-  - Medication Use
+  - Result
 
 # for data transformation
 num_features:
   - Age
-  - Cholesterol
-  - Heart Rate
-  - Exercise Hours Per Week
-  - Stress Level
-  - Sedentary Hours Per Day
-  - Triglycerides
-  - Sleep Hours Per Day
+  - Heart rate
+  - Systolic blood pressure
+  - Diastolic blood pressure
+  - Blood sugar
+  - CK-MB
+  - Troponin
 
 mm_columns:
   - Age
-  - Cholesterol
-  - Heart Rate
-  - Exercise Hours Per Week
-  - Sedentary Hours Per Day
-  - Triglycerides
-  - Sleep Hours Per Day
-  - Systolic
-  - Diastolic
+  - Heart rate
+  - Systolic blood pressure
+  - Diastolic blood pressure
+  - Blood sugar
+  - CK-MB
+  - Troponin

@@ -71,10 +71,8 @@ class ModelEvaluation(DataTransformation):
             test_df = pd.read_csv(self.data_ingestion_artifact.test_file_path)
             x, y = test_df.drop(TARGET_COLUMN, axis=1), test_df[TARGET_COLUMN]
             logging.info("Splitting data into train and test set")
-            x = self._map_gender_column(df=x)
-            x = self._handle_blood_pressure_column(df=x)
-            x = self._drop_unwanted_columns(df=x)
-            # trained_model = load_object(file_path=self.model_trainer_artifact.trained_model_file_path)
+            y = self._map_result_column(col=y)
+
             logging.info("Trained model loaded/exists.")
             trained_model_f1_score = self.model_trainer_artifact.metric_artifact.f1_score
             logging.info(f"F1_Score for this model: {trained_model_f1_score}")

@@ -54,14 +54,10 @@ class ModelTrainerConfig:
     expected_accuracy: float = CONST.MODEL_TRAINER_EXPECTED_SCORE
     model_config_file_path: str = CONST.MODEL_TRAINER_MODEL_CONFIG_FILE_PATH
     _n_estimators = CONST.MODEL_TRAINER_N_ESTIMATORS
-    _min_samples_split = CONST.MODEL_TRAINER_MIN_SAMPLES_SPLIT
-    _min_samples_leaf = CONST.MODEL_TRAINER_MIN_SAMPLES_LEAF
-    _max_depth = CONST.MIN_SAMPLES_SPLIT_MAX_DEPTH
-    _criterion = CONST.MIN_SAMPLES_SPLIT_CRITERION
+    _learning_rate = CONST.MODEL_TRAINER_LEARNING_RATE
+    _subsample = CONST.MODEL_TRAINER_SUBSAMPLE
+    _scale_pos_weight = CONST.MODEL_TRAINER_SCALE_POS_WEIGHT
     _random_state = CONST.MIN_SAMPLES_SPLIT_RANDOM_STATE
-    _class_weight = CONST.MODEL_TRAINER_CLASS_WEIGHT
-    _bootstrap = CONST.MODEL_TRAINER_BOOTSTRAP
-    _max_features = CONST.MODEL_TRAINER_MAX_FEATURES
 
 
 @dataclass

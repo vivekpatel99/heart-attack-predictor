@@ -37,14 +37,6 @@ class DataTransformation:
         except Exception as e:
             raise MyException(e, sys)
 
-    # @staticmethod
-    # def cols_preprocessor(source_df: pd.DataFrame, drop_cols: list):
-    #     bp_split = source_df["Blood Pressure"].str.split("/", expand=True).astype(int)
-    #     bp_split.columns = ["Systolic", "Diastolic"]
-    #     source_df.drop(drop_cols, axis=1, inplace=True)
-    #     source_df = pd.concat([source_df, bp_split], axis=1)
-    #     return source_df
-
     def get_data_transformer_object(self) -> Pipeline:
         """
         Creates and returns a data transformer object for the data,
@@ -56,14 +48,13 @@ class DataTransformation:
         try:
             logging.info("Transformers Initialized: StandardScaler-MinMaxScaler")
             # Load schema configurations
-            categorical_cols = self._schema_config["categorical_columns"]
             continuous_cols = self._schema_config["mm_columns"]
             logging.info("Cols loaded from schema.")
-            categorical_xformer = OrdinalEncoder()
-            continues_xformer = MinMaxScaler()
+
+            continues_xformer = StandardScaler()
 
             preprocessor = ColumnTransformer(
-                transformers=[("cat", categorical_xformer, categorical_cols), ("cont", continues_xformer, continuous_cols)],
+                transformers=[("cont", continues_xformer, continuous_cols)],
                 remainder="passthrough",  # Leaves other columns as they are
             )
             # Wrapping everything in a single pipeline
@@ -75,26 +66,11 @@ class DataTransformation:
             logging.exception("Exception occurred in get_data_transformer_object method of DataTransformation class")
             raise MyException(e, sys) from e
 
-    def _map_gender_column(self, df) -> pd.DataFrame:
+    def _map_result_column(self, col: pd.Series) -> pd.Series:
         """Map Gender column to 0 for Female and 1 for Male."""
         logging.info("Mapping 'Gender' column to binary values")
-        df.Sex = df.Sex.map({"Female": 0, "Male": 1}).astype(int)
-        return df
-
-    def _drop_unwanted_columns(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Drop unnecessary columns."""
-        logging.info("Dropping unwanted columns")
-        drop_col = self._schema_config["drop_columns"]
-        df.drop(drop_col, axis=1, inplace=True)
-        return df
-
-    def _handle_blood_pressure_column(self, df) -> pd.DataFrame:
-        """Split 'Blood Pressure' column into 'Systolic' and 'Diastolic' columns."""
-        bp_split = df["Blood Pressure"].str.split("/", expand=True).astype(int)
-        bp_split.columns = ["Systolic", "Diastolic"]
-
-        df = pd.concat([df, bp_split], axis=1)
-        return df
+        col = col.map({"negative": 0, "positive": 1}).astype(int)
+        return col
 
     def initiate_data_transformation(self) -> DataTransformationArtifact:
         """
@@ -118,13 +94,10 @@ class DataTransformation:
             logging.info("Input and Target cols defined for both train and test df.")
 
             # Preprocessing
-            input_feature_train_df = self._map_gender_column(df=input_feature_train_df)
-            input_feature_train_df = self._handle_blood_pressure_column(df=input_feature_train_df)
-            input_feature_train_df = self._drop_unwanted_columns(df=input_feature_train_df)
+            target_feature_train_df = self._map_result_column(col=target_feature_train_df)
 
-            input_feature_test_df = self._map_gender_column(df=input_feature_test_df)
-            input_feature_test_df = self._handle_blood_pressure_column(df=input_feature_test_df)
-            input_feature_test_df = self._drop_unwanted_columns(df=input_feature_test_df)
+            target_feature_test_df = self._map_result_column(col=target_feature_test_df)
+
             logging.info("Custom transformations applied to train and test data")
 
             logging.info("Starting data transformation")
