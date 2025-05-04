@@ -4,7 +4,7 @@
 
 ### Context
 
-The [Heart Attack Risk Prediction Dataset](https://www.kaggle.com/datasets/sukhmandeepsinghbrar/heart-attack-dataset/data) were collected at Zheen hospital in Erbil, Iraq, from January 2019 to May 2019. The attributes of this dataset are: age, gender, heart rate, systolic blood pressure, diastolic blood pressure, blood sugar, ck-mb and troponin with negative or positive output. According to the provided information, the medical dataset classifies either heart attack or none. The gender column in the data is normalized: the male is set to 1 and the female to 0. The glucose column is set to 1 if it is > 120; otherwise, 0. As for the output, positive is set to 1 and negative to 0.
+The [heart attack datasets](https://www.kaggle.com/datasets/sukhmandeepsinghbrar/heart-attack-dataset/data) were collected at Zheen hospital in Erbil, Iraq, from January 2019 to May 2019. The attributes of this dataset are: age, gender, heart rate, systolic blood pressure, diastolic blood pressure, blood sugar, ck-mb and troponin with negative or positive output. According to the provided information, the medical dataset classifies either heart attack or none. The gender column in the data is normalized: the male is set to 1 and the female to 0. The glucose column is set to 1 if it is > 120; otherwise, 0. As for the output, positive is set to 1 and negative to 0.
 
 ### Dataset Glossary (Column-wise)
 
@@ -15,7 +15,7 @@ The [Heart Attack Risk Prediction Dataset](https://www.kaggle.com/datasets/sukhm
 - **Blood Sugar** - Blood sugar levels of the patient
 - **CK-MB** - Concentration of the CK-MB biomarker
 - **Troponin** - Concentration of the Troponin biomarker
-- **Diagnostic Outcome** - Diagnostic outcome for the patient
+- **Result** - Diagnostic outcome for the patient (1-Heart Attack, 0-No Heart Attack)
 
 ## ✨ Key Features
 
@@ -28,6 +28,7 @@ The [Heart Attack Risk Prediction Dataset](https://www.kaggle.com/datasets/sukhm
 - **Jupyter Notebook:** For exploratory data analysis (EDA), model development, and training.
 - **AWS:** `IAM` and `S3 Bucket` for storing and loading model artifacts.
 - **FastAPI:** for interacting with the model
+- **Streamlit:** for UI design and deployment.
 - **Docker:** Containerization for consistent environment.
 - **VS Code Dev Containers:** Development environment setup.
 
