@@ -1,5 +1,7 @@
 # Heart Attack Predictor - End-to-End MLOps Project
 
+![Demo](readme_assets/app-demo.gif)
+
 ## About Dataset
 
 ### Context
@@ -19,25 +21,28 @@ The [heart attack datasets](https://www.kaggle.com/datasets/sukhmandeepsinghbrar
 
 ## ✨ Key Features
 
-- **End-to-End MLOps Pipeline:** Covers Data Ingestion, Validation, Transformation, Model Training, Evaluation, and Pushing.
+- **End-to-End MLOps Pipeline:** Automates the ML lifecycle including Data Ingestion, Validation, Transformation, Model Training, Evaluation, and Deployment.
 - **Modular Design:** Uses Python best practices (OOP) for maintainable components.
+- **Hyperparameter Tuning & Experiment Tracking:** Leverages Optuna for optimization and MLflow for tracking experiments (See [Notebook](notebooks/02_model_exploration_training.ipynb)).
+- **Classification Model:** Trains an XGBoost classifier (or similar) for heart attack prediction.
 - **Database Integration:** Uses MongoDB Atlas for storing and retrieving data.
 - **Cloud Integration:** Leverages AWS S3 for model storage and registry.
 - **CI/CD Automation:** Implements Continuous Integration and Deployment using GitHub Actions, Docker, AWS ECR, and EC2.
-- **Web Application:** Includes a prediction service (likely Flask/FastAPI based on `app.py`).
+- **Interactive Web Application:** Includes a Streamlit-based application (`app.py`) for making predictions.
 - **Robustness:** Incorporates logging and exception handling.
 
 ## 🛠️ Technologies Used
 
 - **Python:** Core programming language.
-- **Conda:** Environment management.
+- **UV:** Environment management.
 - **Jupyter Notebook:** For exploratory data analysis (EDA), model development, and training.
 - **MongoDB Atlas:** Cloud database for data storage.
 - **AWS:** `IAM`, `S3`, `ECR (Amazon Elastic Container Registry)`, `EC2` for cloud infrastructure, model storage, and deployment.
-- **Flask/FastAPI (assumed):** For building the prediction API (`app.py`).
+- **Streamlit:** For building the prediction API (`app.py`).
 - **Docker:** Containerization for consistent environment.
 - **GitHub Actions:** CI/CD automation.
-- **Scikit-learn:** For machine learning model implementation.
+- **Scikit-learn:** For data preparation.
+- **XGBoost (XGBClassifier):** for training the model
 
 ## Project Structure
 
@@ -52,35 +57,14 @@ The [heart attack datasets](https://www.kaggle.com/datasets/sukhmandeepsinghbrar
 
    *(Note: The project structure is assumed to be pre-generated, potentially using a `template.py` script as mentioned in development steps.)*
 
-2. **Create and Activate Conda Environment:**
+2. **Create and Activate Virtual Environment (using `uv`)/Setup Project Environment:**
+
+   *First, ensure you have `uv` installed. If not, follow the instructions here.*
 
    ```bash
-   conda create -n heartpred python=3.10 -y
-   conda activate heartpred
+   # uv will create a virtual environment named .venv and install dependencies
+   uv sync
    ```
-
-3. **Install Dependencies:**
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-   *(This also installs the project as a local package based on `setup.py` and `pyproject.toml` configurations.)*
-
-4. **Verify Local Package Installation:**
-
-   ```bash
-   pip list
-   ```
-
-   *(Check if your project package appears in the list.)*
-
-```bash
-git clone https://github.com/vivekpatel99/heart-attack-predictor-end-to-end-ml-project.git
-cd heart-attack-predictor-end-to-end-ml-project
-```
-
-2. **Install VS Code Extensions:**
 
 3. **Set up MongoDB Atlas:**
 
@@ -123,7 +107,7 @@ cd heart-attack-predictor-end-to-end-ml-project
      # BUCKET_NAME="yourname-heartattack-models"
      ```
 
-     - *Note: Ensure `.env` is listed in your `.gitignore` file.*
+     - *Note: Ensure `.env` is listed in your `.gitignore` file. If you are using `uv run`, `uv` will automatically load variables from a `.env` file in the current or parent directories, so manual exporting might not be necessary when running scripts via `uv run`.*
      - The application code needs to be configured to load variables from `.env` (e.g., using `python-dotenv`).
 
    - **Method 2: Exporting Variables (Common for Terminals/CI/CD)**
@@ -155,6 +139,17 @@ cd heart-attack-predictor-end-to-end-ml-project
      set AWS_ACCESS_KEY_ID="YOUR_AWS_ACCESS_KEY_ID"
      # ... etc
      ```
+
+6. **Run the Project**
+
+   ```bash
+   uv run streamlit run app.py
+   ```
+
+7. **Push new changes to AWS**
+
+   - First uncomment code from [Github Actions](.github/workflows/aws.yaml) for AWS.
+   - the commit and push your changes. Github Action will automatically build and deploy project on `EC2` instance.
 
 ## 💾 Data Handling
 
