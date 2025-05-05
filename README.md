@@ -189,3 +189,6 @@ While these specifications are recommended for optimal performance, the project 
 ## 📚 Reference
 
 1. [Vehicle Insurance Data Pipeline](https://github.com/vikashishere/YT-MLops-Proj1/tree/main)
+2. [Streamlit Tutorial](https://www.youtube.com/watch?v=yKTEC1Y5bEQ&t=1460s)
+3. [Pydantic Tutorial](https://www.youtube.com/watch?v=rE-y-yMIeok&t=3649s)
+4. [Optuna Tutorial](https://www.youtube.com/watch?v=E2b3SKMw934&t=683s)
