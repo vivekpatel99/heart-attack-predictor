@@ -46,6 +46,14 @@ The [heart attack datasets](https://www.kaggle.com/datasets/sukhmandeepsinghbrar
 
 ## Project Structure
 
+### Model Training Pipeline
+
+![Model Training Pipeline](readme_assets/model_training_pipeline.png)
+
+### CI/CD Pipeline
+
+![CI/CD Pipeline](readme_assets/ci_cd_pipeline.png)
+
 ## 🔧 Setup & Installation
 
 1. **Clone the repository:**
