@@ -46,6 +46,72 @@ The [heart attack datasets](https://www.kaggle.com/datasets/sukhmandeepsinghbrar
 
 ## Project Structure
 
+```tree
+.
+├── app.py
+├── config
+│   ├── model.yaml
+│   └── schema.yaml
+├── demo.py
+├── Dockerfile
+├── LICENSE
+├── main.py
+├── notebooks
+│   ├── 00_mongo_db_setup.ipynb
+│   ├── 01_exploratory_data_analysis.ipynb
+│   └── 02_model_exploration_training.ipynb
+├── pyproject.toml
+├── readme_assets
+├── README.md
+├── requirements.txt
+├── ruff.toml
+├── scripts
+│   └── video-to-giff.sh
+├── setup.py
+├── src
+│   ├── cloud_storage
+│   │   ├── aws_storage.py
+│   │   └── __init__.py
+│   ├── components
+│   │   ├── data_ingestion.py
+│   │   ├── data_transformation.py
+│   │   ├── data_validation.py
+│   │   ├── __init__.py
+│   │   ├── model_evaluation.py
+│   │   ├── model_pusher.py
+│   │   └── model_trainer.py
+│   ├── configuration
+│   │   ├── aws_connection.py
+│   │   ├── __init__.py
+│   │   └── mongo_db_connection.py
+│   ├── constants
+│   │   └── __init__.py
+│   ├── data_access
+│   │   ├── __init__.py
+│   │   └── proj1_data.py
+│   ├── entity
+│   │   ├── api_model.py
+│   │   ├── artifact_entity.py
+│   │   ├── config_entity.py
+│   │   ├── estimator.py
+│   │   ├── __init__.py
+│   │   └── s3_estimator.py
+│   ├── exception
+│   │   └── __init__.py
+│   ├── __init__.py
+│   ├── logger
+│   │   └── __init__.py
+│   ├── pipline
+│   │   ├── __init__.py
+│   │   ├── prediction_pipeline.py
+│   │   └── training_pipeline.py
+│   └── utils
+│       ├── __init__.py
+│       ├── main_utils.py
+│       └── visualization.py
+└── uv.lock
+```
+
 ### Model Training Pipeline
 
 ![Model Training Pipeline](readme_assets/model_training_pipeline.png)
